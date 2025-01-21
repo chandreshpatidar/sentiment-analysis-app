@@ -5,10 +5,7 @@ import { Response } from "express";
 import { errorHandlerWrapper } from "@/utils";
 import { AuthenticatedRequest, FeedbackResponseType } from "@/types";
 
-const postFeedbackHandler = async (
-  req: AuthenticatedRequest,
-  res: Response
-): Promise<FeedbackResponseType> => {
+const postFeedbackHandler = async (req: AuthenticatedRequest, res: Response): Promise<FeedbackResponseType> => {
   const { text } = req.body;
   if (!text || typeof text !== "string") {
     res.status(400).json({ error: "Text is required" });
@@ -16,9 +13,7 @@ const postFeedbackHandler = async (
   }
 
   if (text.trim().length > 1000) {
-    res
-      .status(400)
-      .json({ error: "Text is too long, allowed limit is 1000 characters" });
+    res.status(400).json({ error: "Text is too long, allowed limit is 1000 characters" });
     return;
   }
 
@@ -45,7 +40,8 @@ const postFeedbackHandler = async (
 
 const getFeedbackHandler = async (req: AuthenticatedRequest, res: Response) => {
   const { user } = req;
-  const { cursor = null, limit = 10 } = req.query;
+  const limit = req.query.limit || 10;
+  const cursor = req.query.cursor && req.query.cursor !== "null" ? req.query.cursor : null;
 
   if (user.role !== "admin") {
     res.status(403).json({ error: "Forbidden" });
