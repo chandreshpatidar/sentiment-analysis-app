@@ -17,3 +17,9 @@ export type FeedbackResponseType = {
   createdAt: string;
   id: string;
 };
+
+export type PaginatedFeedbackResponseType = {
+  data: FeedbackResponseType[];
+  hasNextPage: boolean;
+  nextCursor: string | null;
+};

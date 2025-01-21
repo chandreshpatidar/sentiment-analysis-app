@@ -44,9 +44,21 @@ const postFeedbackHandler = async (
 };
 
 const getFeedbackHandler = async (req: AuthenticatedRequest, res: Response) => {
-  const { text } = req.body;
+  const { user } = req;
+  const { cursor = null, limit = 10 } = req.query;
 
-  res.status(200).json({ text, length: text.length });
+  if (user.role !== "admin") {
+    res.status(403).json({ error: "Forbidden" });
+    return;
+  }
+
+  const queryLimit = parseInt(limit as string, 10);
+  const feedbacks = await feedbackService.getFeedback({
+    cursor: cursor as string,
+    limit: queryLimit,
+  });
+
+  res.status(200).json(feedbacks);
 };
 
 export const postFeedback = errorHandlerWrapper(postFeedbackHandler);
