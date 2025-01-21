@@ -29,3 +29,9 @@ This project implements a sentiment analysis system integrated with an Express.j
 | sentiment | String    | Categorized sentiment (Good/Bad/Neutral). |
 | user_id   | Integer   | Foreign key linking to the User table.    |
 | createdAt | Timestamp | Auto-generated creation time.             |
+
+## Additional implementation
+
+- Fixed auth.middleware to attach user to req object
+- Use auth.middlewware for all feedback routes
+- Dockerize application, additionally docker-compose supports auto-restart on file changes.
