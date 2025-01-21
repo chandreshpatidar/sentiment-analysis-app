@@ -5,6 +5,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@google-cloud/language": "^6.5.0",
     "@types/cors": "^2.8.17",
     "@types/http-status": "^1.1.2",
     "@types/jest": "^29.5.14",
