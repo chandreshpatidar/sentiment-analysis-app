@@ -1,7 +1,8 @@
 /** @format */
 
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { CoreEntity } from "./core.entity";
+import { FeedbackEntity } from "./feedback.entity";
 
 @Entity({ name: "user" })
 export class UserEntity extends CoreEntity {
@@ -16,4 +17,7 @@ export class UserEntity extends CoreEntity {
 
   @Column({ type: "enum", enum: ["user", "admin"], default: "user" })
   role: string;
+
+  @OneToMany(() => FeedbackEntity, (sentiment) => sentiment.user)
+  feedbacks: FeedbackEntity[];
 }
