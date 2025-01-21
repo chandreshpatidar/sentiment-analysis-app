@@ -1,5 +1,5 @@
-import React from "react";
+import { FeedbackForm } from "@/modules/feedback/components";
 
 export default function NewFeedbackPage() {
-  return <div>Feedback form</div>;
+  return <FeedbackForm />;
 }
