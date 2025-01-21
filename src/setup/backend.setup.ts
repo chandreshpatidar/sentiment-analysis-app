@@ -4,7 +4,6 @@ import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import router from "@/routers";
 import { Logger } from "@/utils";
-import { clientUse } from "valid-ip-scope";
 import {
   authMiddleware,
   errorHandlerMiddleware,
@@ -16,7 +15,6 @@ export const backendSetup = () => {
 
   app.use(cors());
   app.use(express.json());
-  app.use(clientUse());
   app.use(routeMiddleware);
   app.use("/health", (_req: Request, res: Response) => {
     res.send("It's healthy!");

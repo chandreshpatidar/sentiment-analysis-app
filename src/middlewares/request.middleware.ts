@@ -1,8 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-
-import { Logger } from "@/utils";
-import { validateIp } from "@/utils/ipValidator";
-import { clientInspector } from "valid-ip-scope";
+import { getClientInfo, Logger, validateIp } from "@/utils";
 import "dotenv/config";
 
 const formatRequestData = (req: Request) => ({
@@ -24,7 +21,7 @@ export const routeMiddleware = async (
 
     const ipValidation = validateIp(req.ip);
     const clientInfo = ipValidation.isValid
-      ? await clientInspector(req)
+      ? getClientInfo(req)
       : { error: ipValidation.reason };
 
     Logger.group({

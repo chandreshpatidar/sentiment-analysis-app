@@ -1,4 +1,4 @@
-import { clientIpValidator } from "valid-ip-scope";
+import { isV4Format, isV6Format } from "ip";
 
 const LOCALHOST_IPS: readonly string[] = [
   "::1",
@@ -23,8 +23,14 @@ export const validateIp = (ip: string): IpValidationResult => {
     return { isValid: false, reason: "Localhost IP not allowed" };
   }
 
+  let isValid = false;
+
+  if (isV4Format(ip) || isV6Format(ip)) {
+    isValid = true;
+  }
+
   return {
-    isValid: clientIpValidator(ip),
-    reason: clientIpValidator(ip) ? undefined : "Invalid IP format",
+    isValid,
+    reason: isValid ? undefined : "Invalid IP format",
   };
 };
