@@ -19,7 +19,7 @@ type IpValidationResult = {
 export const validateIp = (ip: string): IpValidationResult => {
   if (!ip) return { isValid: false, reason: "IP is empty" };
 
-  if (LOCALHOST_IPS.includes(ip)) {
+  if (LOCALHOST_IPS.includes(ip) && process.env.NODE_ENV !== "development") {
     return { isValid: false, reason: "Localhost IP not allowed" };
   }
 
