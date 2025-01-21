@@ -38,6 +38,7 @@ export const databaseSetup = async (): Promise<void> => {
       process.env.ADMIN_PASSWORD,
       10
     );
+    const userHashedPassword = await bcrypt.hash(process.env.USER_PASSWORD, 10);
 
     const adminUser: CreateUserRequestType = {
       name: process.env.ADMIN_NAME,
@@ -45,6 +46,22 @@ export const databaseSetup = async (): Promise<void> => {
       role: "admin",
     };
 
-    authService.createUser(adminUser);
+    const user1: CreateUserRequestType = {
+      name: "user1",
+      hashedPassword: userHashedPassword,
+      role: "user",
+    };
+
+    const user2: CreateUserRequestType = {
+      name: "user2",
+      hashedPassword: userHashedPassword,
+      role: "user",
+    };
+
+    await Promise.all([
+      authService.createUser(adminUser),
+      authService.createUser(user1),
+      authService.createUser(user2),
+    ]);
   }
 };
