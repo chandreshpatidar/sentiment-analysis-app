@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Provider } from "@/components/ui/provider";
 
 export const metadata: Metadata = {
   title: "Sentiment",
@@ -15,7 +16,9 @@ export default function RootLayout({
       suppressHydrationWarning
       lang="en"
     >
-      <body>{children}</body>
+      <body>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }
