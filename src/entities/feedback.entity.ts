@@ -7,6 +7,7 @@ import {
 } from "typeorm";
 import { CoreEntity } from "./core.entity";
 import { UserEntity } from "./user.entity";
+import { SentimentType } from "@/types";
 
 @Entity({ name: "feedback" })
 export class FeedbackEntity extends CoreEntity {
@@ -22,8 +23,8 @@ export class FeedbackEntity extends CoreEntity {
   @Column("float")
   magnitude: number;
 
-  @Column({ length: 10 })
-  sentiment: string;
+  @Column({ type: "enum", enum: ["Good", "Bad", "Neutral"] })
+  sentiment: SentimentType;
 
   @ManyToOne(() => UserEntity, (user) => user.feedbacks, {
     onDelete: "CASCADE",
