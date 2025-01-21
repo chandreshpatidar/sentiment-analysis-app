@@ -10,8 +10,8 @@ import { UserEntity } from "./user.entity";
 
 @Entity({ name: "feedback" })
 export class FeedbackEntity extends CoreEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  uuid: string;
 
   @Column({ length: 1000 })
   text: string;
