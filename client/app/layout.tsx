@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Provider } from "@/components/ui/provider";
+import { AppLayout } from "@/components/AppLayout";
 
 export const metadata: Metadata = {
   title: "Sentiment",
@@ -17,7 +18,9 @@ export default function RootLayout({
       lang="en"
     >
       <body>
-        <Provider>{children}</Provider>
+        <Provider>
+          <AppLayout>{children}</AppLayout>
+        </Provider>
       </body>
     </html>
   );
