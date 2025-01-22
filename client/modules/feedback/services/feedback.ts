@@ -1,5 +1,6 @@
 import cookie from 'js-cookie';
 import { ACCESS_TOKEN_KEY, API_BASE_URL } from '@/config';
+import { toaster } from '@/components/ui/toaster';
 
 export const addFeedback = async (feedback: string) => {
   try {
@@ -14,8 +15,11 @@ export const addFeedback = async (feedback: string) => {
     const parsedRes = await res.json();
 
     if (res.ok) {
+      toaster.create({ type: "success", title: "Feedback submitted successfully" });
       return parsedRes;
     }
+
+    toaster.create({ type: "error", title: "Error in submitting feedback" });
 
     return {
       error: true,
@@ -23,6 +27,8 @@ export const addFeedback = async (feedback: string) => {
     };
   } catch (error) {
     console.error(`Error in adding feedback: ${error}`);
+    toaster.create({ type: "error", title: "Error in submitting feedback" });
+
     return null;
   }
 };

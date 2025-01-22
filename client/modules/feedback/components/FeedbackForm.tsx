@@ -3,7 +3,6 @@ import React, { useState, useTransition } from "react";
 import { Box, Flex, Heading, Stack, Text, Textarea } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { toaster } from "@/components/ui/toaster";
 import { addFeedback } from "../services/feedback";
 
 const MAX_CHARS = 1000;
@@ -112,12 +111,10 @@ const FeedbackForm = () => {
       const res = await addFeedback(feedback);
 
       if (res?.error) {
-        toaster.create({ type: "error", title: "Error in submitting feedback" });
         setError(res?.message);
         return;
       }
 
-      toaster.create({ type: "success", title: "Feedback submitted successfully" });
       setFeedback("");
       if (error) setError("");
     });
