@@ -1,28 +1,10 @@
 # Home Assignment: Sentiment Analysis Application
 
-## Requirements
+## Description
 
-Please read [Requirements.md](./Requirements.md)
-
-## Setup Instructions
-
-1. **Cloud NLP Setup**
-   - Create a Google Cloud Project
-   - Enable [Cloud Netural Language API](https://console.cloud.google.com/marketplace/product/google/language.googleapis.com?q=search&hl=en)
-   - Associate credentials and generate a service account key file
-   - Download service account key file at `~/local/service-accounts/path.json`
-
-2. **Run Dev Server**
-   - Update Service account key path in `docker-compose` file
-   
-      <span style="color: red;">~/Documents/service-accounts:/service-accounts</span>
-
-      <span style="color: green;">~/local/service-accounts:/service-accounts</span>
-   - Run command
-      ```bash 
-      docker-compose up
-      ```
-   - Server should be available at http://localhost:8000/
+This is a sentiment analysis application that allows users to analyze the sentiment of a given text.
+Your (imagined) customer has developed a new product that they are selling on their e-commerce website.
+The customer wants to get better insights into how their customers think about their product, so they are asking you to implement a Proof of Concept for a customer feedback form with sentiment analysis.
 
 ## Requirements
 
