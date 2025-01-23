@@ -27,7 +27,6 @@ export const ProfileMenu = () => {
     const cookieOptions: Cookies.CookieAttributes = {
       path: "/",
       secure: IS_PRODUCTION,
-      httpOnly: IS_PRODUCTION,
       sameSite: IS_PRODUCTION ? "Strict" : "Lax",
     };
 

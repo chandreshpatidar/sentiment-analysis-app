@@ -38,7 +38,6 @@ const SignInForm = () => {
       const cookieOptions: Cookies.CookieAttributes = {
         path: "/",
         secure: IS_PRODUCTION,
-        httpOnly: IS_PRODUCTION,
         sameSite: IS_PRODUCTION ? "Strict" : "Lax",
         expires: new Date(Date.now() + 60 * 60 * 1000),
       };
