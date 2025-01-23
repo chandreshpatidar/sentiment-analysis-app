@@ -36,7 +36,6 @@ const SignInForm = () => {
 
     if (res) {
       const cookieOptions: Cookies.CookieAttributes = {
-        domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
         path: "/",
         secure: IS_PRODUCTION,
         httpOnly: IS_PRODUCTION,

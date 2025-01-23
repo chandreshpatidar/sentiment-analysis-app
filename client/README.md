@@ -30,7 +30,6 @@ Follow these steps to get the Sentiment App up and running locally:
     Create `.env` file in root directory and paste environment vaiables from `.env.example` file or from below and update the value
 
     ```bash
-    NEXT_PUBLIC_COOKIE_DOMAIN="localhost"
     NEXT_PUBLIC_API_BASE_URL="http://localhost:8000/api"
     ```
 
